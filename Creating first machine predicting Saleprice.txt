@@ -1,0 +1,42 @@
+Step1-Specify prediction target
+
+#Importing pandas 
+import panda as pd
+# Path of the file to read
+iowa_file_path = '../input/home-data-for-ml-course/train.csv'
+#Optional
+#Now we will printout columns to select what i want to select as target
+home_data.columns
+
+#Now saving the column into a variable Y which is our target column(It means by this we will predict other column/data)
+y=home_data['SalePrice']
+
+
+Step2-Create X *Data variable of columns in which u have to predict data*
+
+#Now to be more specific about the columns in which we have to predict, we are creating a list having those selected columns
+feature_names = ['LotArea',
+'YearBuilt',
+'1stFlrSF',
+'2ndFlrSF',
+'FullBath',
+'BedroomAbvGr',
+'TotRmsAbvGrd']
+
+# now add the data into a variable X of all those columns
+X = home_data[feature_names]
+
+Step3- Speficy and fit the data
+*DecisionTreeRegressor is a Supervised Machine learning algorith used to predict continuous numerical data*
+
+from sklearn.tree import DecisionTreeRegressor
+iowa_model = DecisionTreeRegressor(random_state=1)
+**Now fit the model**
+iowa_model.fit(X, y)
+
+Step4- Now predict
+
+predictions =iowa_model.predict(X)
+print(predictions)
+
+
